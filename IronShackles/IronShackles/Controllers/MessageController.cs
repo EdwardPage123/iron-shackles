@@ -11,8 +11,20 @@ namespace IronShackles.Controllers
     {
         public ActionResult Index()
         {
-            var model = new MessageViewModel() { MessageTitle = "Let's see if this works properly", Date = DateTime.Now };
+            var model = new MessageViewModel()
+            {
+                Date = DateTime.Now
+            };
+            model.MessageTitle = "This is the new message I can awesomely set";
+            model.MessageVersionNumber = 5;
             return View(model);
         }
+        
+        [HttpPost]
+        public ActionResult Submit(MessageViewModel model )
+        {
+            return View("Index", model);
+        }
+
     }
 }
